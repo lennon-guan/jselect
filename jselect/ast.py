@@ -78,7 +78,7 @@ class CondExpr(AstNode):
         self.terms = []
         self.not_expr = False
     def test(self, data):
-        r = False
+        r = len(self.terms) == 0
         for term in self.terms:
             if term.test(data):
                 r = True
@@ -115,8 +115,6 @@ class Query(AstNode):
         return '\n'.join(lines)
 
     def test(self, data):
-        if self.conditions is None:
-            return True
         return self.conditions.test(data)
 
     def pick(self, data):

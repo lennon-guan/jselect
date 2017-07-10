@@ -103,12 +103,6 @@ parser = yacc.yacc(start='query')
 
 
 def parse(qstr):
-    lexer.input(qstr)
-    while False:
-        token = lexer.token()
-        if not token:
-            break
-        print token
     return parser.parse(qstr)
 
 if __name__ == '__main__':
